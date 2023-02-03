@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart' as mt;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../Models/resume.dart';
 
-Future<Document> buildPdf(Resume resume) async {
+Future<Document> buildPdf(Resume resume, mt.BuildContext buContext) async {
   final pdf = Document();
   Widget avatar = Container();
 
@@ -68,7 +70,7 @@ Future<Document> buildPdf(Resume resume) async {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (resume.works.isNotEmpty)
-                          Text('Experience',
+                          Text(AppLocalizations.of(buContext).workExperience,
                               style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: pw.FontWeight.bold)),
@@ -98,7 +100,7 @@ Future<Document> buildPdf(Resume resume) async {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (resume.education.isNotEmpty)
-                          Text('Education',
+                          Text(AppLocalizations.of(buContext).education,
                               style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: pw.FontWeight.bold)),
@@ -117,7 +119,7 @@ Future<Document> buildPdf(Resume resume) async {
                             crossAxisAlignment: CrossAxisAlignment.start,
                           ),
                         if (resume.skills.isNotEmpty)
-                          Text('Skills',
+                          Text(AppLocalizations.of(buContext).skills,
                               style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: pw.FontWeight.bold)),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resumebuilder/Components/cutsom_button.dart';
 import 'package:resumebuilder/Screens/resume_preview.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../Components/added_item.dart';
 import '../Components/text_field.dart';
 import '../Models/resume.dart';
@@ -176,36 +177,36 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
           child: Column(
             children: [
               ExpansionTile(
-                  title: const Text(
-                    "Personal Info",
+                  title: Text(
+                    AppLocalizations.of(context).personalInfo,
                     style:
                         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   children: <Widget>[
-                     CustomButton(
-                        onPress: pickResumeImage,
-                        text: "Pick Image",
-                      ),
+                    CustomButton(
+                      onPress: pickResumeImage,
+                      text: AppLocalizations.of(context).pickImage,
+                    ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextFieldComponent(
                       text: name,
-                      placeholder: "Name",
+                      placeholder: AppLocalizations.of(context).name,
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextFieldComponent(
                       text: title,
-                      placeholder: "Title",
+                      placeholder: AppLocalizations.of(context).title,
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     TextFieldComponent(
                       text: bio,
-                      placeholder: "Bio",
+                      placeholder: AppLocalizations.of(context).bio,
                       maxLines: 5,
                     ),
                     const SizedBox(
@@ -213,7 +214,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                     ),
                     TextFieldComponent(
                       text: phone,
-                      placeholder: "Phone",
+                      placeholder: AppLocalizations.of(context).phone,
                       type: TextInputType.phone,
                     ),
                     const SizedBox(
@@ -229,7 +230,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                     ),
                     TextFieldComponent(
                       text: location,
-                      placeholder: "Location",
+                      placeholder: AppLocalizations.of(context).location,
                       type: TextInputType.streetAddress,
                     ),
                   ]),
@@ -237,8 +238,8 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                 height: 15,
               ),
               ExpansionTile(
-                title: const Text(
-                  "Work Experience",
+                title: Text(
+                  AppLocalizations.of(context).workExperience,
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 children: <Widget>[
@@ -266,7 +267,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                     children: <Widget>[
                       TextFieldComponent(
                         text: workTitle,
-                        placeholder: "Work title",
+                        placeholder: AppLocalizations.of(context).workTitle,
                         type: TextInputType.text,
                       ),
                       const SizedBox(
@@ -274,7 +275,8 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                       ),
                       TextFieldComponent(
                         text: workEnterpraise,
-                        placeholder: "Work enterpraise",
+                        placeholder:
+                            AppLocalizations.of(context).workEnterpraise,
                         type: TextInputType.text,
                       ),
                       const SizedBox(
@@ -282,7 +284,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                       ),
                       TextFieldComponent(
                         text: workDescription,
-                        placeholder: "Work Desc",
+                        placeholder: AppLocalizations.of(context).workDesc,
                         type: TextInputType.text,
                         maxLines: 3,
                       ),
@@ -291,7 +293,9 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                       ),
                       CustomButton(
                         onPress: addWorkExperience,
-                        text: isEditingWorks ? "Update" : "Add",
+                        text: isEditingWorks
+                            ? AppLocalizations.of(context).update
+                            : AppLocalizations.of(context).add,
                       ),
                     ],
                   ),
@@ -301,8 +305,8 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                 height: 15,
               ),
               ExpansionTile(
-                title: const Text(
-                  "Education",
+                title: Text(
+                  AppLocalizations.of(context).education,
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 children: <Widget>[
@@ -330,7 +334,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                     children: <Widget>[
                       TextFieldComponent(
                         text: edutitle,
-                        placeholder: "Title",
+                        placeholder: AppLocalizations.of(context).schoolTitle,
                         type: TextInputType.text,
                       ),
                       const SizedBox(
@@ -338,7 +342,7 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                       ),
                       TextFieldComponent(
                         text: eduSchool,
-                        placeholder: "School",
+                        placeholder: AppLocalizations.of(context).school,
                         type: TextInputType.text,
                       ),
                       const SizedBox(
@@ -346,24 +350,26 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                       ),
                       TextFieldComponent(
                         text: eduDescription,
-                        placeholder: "Description",
+                        placeholder: AppLocalizations.of(context).description,
                         type: TextInputType.text,
                         maxLines: 3,
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                        CustomButton(
+                      CustomButton(
                         onPress: addEducation,
-                        text: isEditingEducation ? "Update" : "Add",
+                        text: isEditingEducation
+                            ? AppLocalizations.of(context).update
+                            : AppLocalizations.of(context).add,
                       ),
                     ],
                   ),
                 ],
               ),
               ExpansionTile(
-                title: const Text(
-                  "Skills",
+                title: Text(
+                  AppLocalizations.of(context).skills,
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 children: <Widget>[
@@ -389,12 +395,14 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
                     children: <Widget>[
                       TextFieldComponent(
                         text: skilltitle,
-                        placeholder: "Skill",
+                        placeholder: AppLocalizations.of(context).skill,
                         type: TextInputType.text,
                       ),
                       CustomButton(
                         onPress: addSkill,
-                        text: isEditingSkills ? "Update" : "Add",
+                        text: isEditingSkills
+                            ? AppLocalizations.of(context).update
+                            : AppLocalizations.of(context).add,
                       ),
                     ],
                   ),
@@ -403,10 +411,10 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
               const SizedBox(
                 height: 15,
               ),
-               CustomButton(
-                        onPress: previewResume,
-                        text: "Preview",
-                      ),
+              CustomButton(
+                onPress: previewResume,
+                text: AppLocalizations.of(context).preview,
+              ),
             ],
           ),
         ),
@@ -414,5 +422,3 @@ class _ResumeBuilderScreenState extends State<ResumeBuilderScreen> {
     );
   }
 }
-
-

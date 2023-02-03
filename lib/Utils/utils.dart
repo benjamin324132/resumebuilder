@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../Components/generate_pdf.dart';
 import '../Models/resume.dart';
 
@@ -25,13 +26,13 @@ Future<String?> getDownloadPath() async {
   return directory?.path;
 }
 
-Future<Uint8List> generatePdf(Resume resume) async {
-  final pdf = await buildPdf(resume);
+Future<Uint8List> generatePdf(Resume resume, BuildContext context) async {
+  final pdf = await buildPdf(resume, context);
   return pdf.save();
 }
 
 void savePdf(BuildContext context, Resume resume, String title) async {
-  final pdf = await buildPdf(resume);
+  final pdf = await buildPdf(resume, context);
   final status = await Permission.storage.request();
   if (!status.isGranted) {
     if (kDebugMode) {
@@ -43,10 +44,10 @@ void savePdf(BuildContext context, Resume resume, String title) async {
   try {
     final file = File("$output/${title}.pdf");
     await file.writeAsBytes(await pdf.save());
-    showSnackBar(context, "Saved successfully");
+    showSnackBar(context, AppLocalizations.of(context).succes);
     Navigator.pop(context);
   } catch (err) {
-    showSnackBar(context, "Error to save");
+    showSnackBar(context, AppLocalizations.of(context).error);
   }
 }
 

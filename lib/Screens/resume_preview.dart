@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 import 'package:resumebuilder/Utils/constants.dart';
 import 'package:resumebuilder/Utils/utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../Models/resume.dart';
 
 class ResumePrevie extends StatefulWidget {
@@ -20,26 +21,31 @@ class _ResumePrevieState extends State<ResumePrevie> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Save your resume'),
+            title: Text(AppLocalizations.of(context).saveResume),
             content: TextField(
               controller: _textFieldController,
               textCapitalization: TextCapitalization.sentences,
-              decoration: const InputDecoration(hintText: "Resume name"),
+              decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context).resumeName),
             ),
             actions: <Widget>[
               ElevatedButton(
-                child: const Text("Cancel"),
+                child: Text(AppLocalizations.of(context).cancel),
                 onPressed: () => Navigator.pop(context),
               ),
               ElevatedButton(
                 child: const Text('OK'),
                 onPressed: () => {
                   if (_textFieldController.text.isNotEmpty)
-                    {savePdf(context, widget.resume, _textFieldController.text),
-                    
+                    {
+                      savePdf(
+                          context, widget.resume, _textFieldController.text),
                     }
                   else
-                    {showSnackBar(context, "Add a valid name")}
+                    {
+                      showSnackBar(
+                          context, AppLocalizations.of(context).addName)
+                    }
                 },
               ),
             ],
@@ -48,7 +54,7 @@ class _ResumePrevieState extends State<ResumePrevie> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext buContext) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
@@ -58,7 +64,7 @@ class _ResumePrevieState extends State<ResumePrevie> {
         child: const Icon(Icons.save),
       ),
       body: PdfPreview(
-        build: (context) => generatePdf(widget.resume),
+        build: (context) => generatePdf(widget.resume, buContext),
         useActions: false,
       ),
     );
